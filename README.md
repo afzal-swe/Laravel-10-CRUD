@@ -72,3 +72,11 @@ Require this package with composer. It is recommended to only require the packag
 ```shell
 composer require captcha-com/laravel-captcha:"4.*"
 ```
+
+config/app.php
+
+```shell
+provides => [
+    LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
+]
+```
