@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostProcessed;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Subcategory;
-use App\Models\Product_Post;
-use App\Models\User;
+use App\Models\{Category, Subcategory, Product_Post, User};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -81,7 +79,10 @@ class ProductPostController extends Controller
         // return redirect()->back()->with($notification);
 
 
+        // __ Event calling PostProcessed __ //
 
+        $data = ['title' => $request->title, 'date' => date('d F Y', strtotime($request->post_date))];
+        event(new PostProcessed($data));
 
 
         $valide['user_id'] = Auth::id();
