@@ -57,7 +57,7 @@
                                     {{-- <td>{{$row->Auth::user()->name }}</td> --}}
                                     <td>{{$row->title}}</td>
                                     <td>{{$row->slug}}</td>
-                                    <td>{{$row->post_date}}</td>
+                                    <td>{{date('d F y',strtotime($row->post_date))}}</td>
                                     {{-- <td>{{$row->image}}</td> --}}
                                     {{-- <td>{{$row->description}}</td> --}}
                                     {{-- <td>{{$row->tags}}</td> --}}
@@ -69,7 +69,7 @@
                                       @endif
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('post.edit',$row->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                                         <a href="{{ route('post.delete',$row->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>

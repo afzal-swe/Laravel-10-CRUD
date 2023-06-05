@@ -111,4 +111,32 @@ class ProductPostController extends Controller
         $notification = array('messege' => 'Successfully Deleted!', 'alert-type' => "success");
         return redirect()->back()->with($notification);
     }
+    public function edit($id)
+    {
+        $category = Category::all();
+        $subcategories = Subcategory::all();
+        $product_post = Product_Post::find($id);
+        return view('admin.product_post.edit', compact('category', 'subcategories', 'product_post'));
+    }
+    public function update(Request $request, $id)
+    {
+        $valide = $request->validate([
+            // 'user_id' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'title' => 'required',
+            'tags' => 'required',
+            'description' => 'required',
+            'post_date' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            // 'slug' => 'nullable',
+        ]);
+
+        // $valide['user_id'] = Auth::id();
+        // $valide['slug'] = Str::of($request->title)->slug('-');
+        // if (Product_Post::update($valide));
+
+        // $notification = array('messege' => 'Successfully Update!', 'alert-type' => "success");
+        // return redirect()->back()->with($notification);
+    }
 }
