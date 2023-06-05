@@ -73,10 +73,33 @@ Require this package with composer. It is recommended to only require the packag
 composer require captcha-com/laravel-captcha:"4.*"
 ```
 
-config/app.php
+## config/app.php
 
 ```shell
 provides => [
     LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
-]
+],
+```
+
+## Publish
+
+```shell
+php artisan vendor:publish
+```
+
+## Captcha login/Registration Code
+
+```shell
+<div class="form-group">{{ $errors->has('CaptchaCode')?'has-error':'' }}
+    <label class="col-md-4 control-label">Captcha</label>
+    <div class="col-md-6">
+            {!! captcha_image_html('ContactCaptcha')!!}
+            <input type="text" id="CaptchaCode" name="CaptchaCode" class="form-control">
+            @if ($errors->has('CaptchaCode'))
+                <span class="help-block">
+                 <strong>{{ $errors->first('CaptchaCode') }}</strong>
+                 </span>
+            @endif
+    </div>
+</div>
 ```

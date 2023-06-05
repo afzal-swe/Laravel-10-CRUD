@@ -43,6 +43,19 @@
                 </div>
               </div>
 
+              {{-- <div class="form-group">{{ $errors->has('CaptchaCode')?'has-error':'' }}
+                <label class="col-md-4 control-label">Captcha</label>
+                  <div class="col-md-6">
+                    {!! captcha_image_html('ContactCaptcha')!!}
+                    <input type="text" id="CaptchaCode" name="CaptchaCode" class="form-control">
+                    @if ($errors->has('CaptchaCode'))
+                      <span class="help-block">
+                        <strong>{{ $errors->first('CaptchaCode') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+              </div> --}}
+
               <div class="row">
                 <div class="col-8">
                   <div class="icheck-primary">
